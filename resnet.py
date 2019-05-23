@@ -14,7 +14,7 @@ def conv3x3(inchannel, outchannel, stride=1):
 
 class BasicBlock(nn.Module):
     def __init__(self,inchannel,outchannel,stride=1):
-        super(ResidualBlock,self).__init__()
+        super(BasicBlock,self).__init__()
         self.conv1 = conv3x3(inchannel,outchannel,stride)
         self.bn1 = nn.BatchNorm2d(outchannel)
         self.relu = nn.ReLU(inplace=True)
