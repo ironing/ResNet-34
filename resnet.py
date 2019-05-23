@@ -80,10 +80,10 @@ class ResNet(nn.Module):
         self.bn1 = nn.BatchNorm2d(64)
         self.relu = nn.ReLU(inplace=True)
         self.maxpool = nn.MaxPool2d(kernel_size=3,stride=2,padding=1)
-        self.layer1 = self._make_layer(block, 64, layer[0])
-        self.layer2 = self._make_layer(block, 128, layer[1])
-        self.layer3 = self._make_layer(block, 256, layer[2])
-        self.layer4 = self._make_layer(block, 512, layer[3])
+        self.layer1 = self._make_layer(block, 64, layers[0])
+        self.layer2 = self._make_layer(block, 128, layers[1])
+        self.layer3 = self._make_layer(block, 256, layers[2])
+        self.layer4 = self._make_layer(block, 512, layers[3])
         self.avgpool = nn.AvgPool2d(7,stride=1)
 
         self.fc = nn.Linear(512*block.expansion, num_classes)
@@ -122,10 +122,8 @@ class ResNet(nn.Module):
 
         return x
 
-def resnet34(pretrained=False, modelpath='./models',**kwargs):
-    model = ResNet(BasicBlock, [3,4,6,3], **kwargs)
-    if pretrained:
-        model.load_state_dict(model_zoo.load_url(model_urls['resnet34'], model_dir=modelpath))
+def resnet34():
+    model = ResNet(BasicBlock, [3,4,6,3])
     return model
 
 
