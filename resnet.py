@@ -13,6 +13,8 @@ def conv3x3(inchannel, outchannel, stride=1):
     return nn.Conv2d(inchannel, outchannel, kernel_size=3, stride=stride, padding=1, bias=False)
 
 class BasicBlock(nn.Module):
+    expansion = 1
+    
     def __init__(self,inchannel,outchannel,stride=1):
         super(BasicBlock,self).__init__()
         self.conv1 = conv3x3(inchannel,outchannel,stride)
