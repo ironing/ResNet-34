@@ -27,8 +27,9 @@ LR = 0.1        #学习率
 transform = transforms.Compose([
     #transforms.RandomCrop(32, padding=4),  #先四周填充0，在吧图像随机裁剪成32*32
     transforms.ToTensor(),
-    transforms.Normalize([0.5, 0.5, 0.5], [0.5, 0.5, 0.5])]), #R,G,B每层的归一化用到的均值和方差
-])
+    transforms.Normalize([0.5, 0.5, 0.5], [0.5, 0.5, 0.5])
+]), #R,G,B每层的归一化用到的均值和方差
+
 
 
 trainset = torchvision.datasets.CIFAR10(root='./data', train=True, download=True, transform=transform) #训练数据集
