@@ -18,7 +18,7 @@ args = parser.parse_args()
 # 超参数设置
 EPOCH = 50   #遍历数据集次数
 pre_epoch = 0  # 定义已经遍历数据集的次数
-BATCH_SIZE = 64      #批处理尺寸(batch_size)
+BATCH_SIZE = 128      #批处理尺寸(batch_size)
 LR = 0.1        #学习率
 
 
