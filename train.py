@@ -18,7 +18,7 @@ args = parser.parse_args()
 # 超参数设置
 EPOCH = 50   #遍历数据集次数
 pre_epoch = 0  # 定义已经遍历数据集的次数
-BATCH_SIZE = 128      #批处理尺寸(batch_size)
+BATCH_SIZE = 64      #批处理尺寸(batch_size)
 LR = 0.1        #学习率
 
 
@@ -27,13 +27,13 @@ LR = 0.1        #学习率
 transform_train = transforms.Compose([
     #transforms.RandomCrop(32, padding=4),  #先四周填充0，在吧图像随机裁剪成32*32
     transforms.ToTensor(),
-    transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)), #R,G,B每层的归一化用到的均值和方差
+    transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)), #R,G,B每层的归一化用到的均值和方差
 ])
 
 transform_test = transforms.Compose([
     transforms.Resize((224, 224)),
     transforms.ToTensor(),
-    transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),
+    transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
 ])
 
 trainset = torchvision.datasets.CIFAR10(root='./data', train=True, download=True, transform=transform_train) #训练数据集
